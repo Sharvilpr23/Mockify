@@ -1,0 +1,36 @@
+h1 {
+    font-size: 64px;
+    font-family: "Sofia";
+    color: black;
+    text-align: center;
+    padding-left: 50px;
+}
+
+h2 {
+    font-size: 50px;
+    font-family: "Sofia";
+    color: black;
+    text-align: center;
+    padding-left: 50px;
+}
+
+h3 {
+    font-size: 48px;
+    color: black;
+    text-align: center;
+    padding-left: 50px;
+    padding-top: 10px;
+}
+
+
+html {
+    background-color: white;
+    background: url("https://cutewallpaper.org/21/white-backgrounds-wallpapers/Download-52-Clean-White-Wallpapers-For-Desktop-Laptops.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+    /*overflow: hidden;*/
+}
+
+a {
+    text-decoration: none;
+}

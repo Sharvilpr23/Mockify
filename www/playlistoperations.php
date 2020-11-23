@@ -1,8 +1,14 @@
-<html>
-<body>
 <?php
     include_once 'includes/connection.php';
+?>
 
+<html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <title>M | albums</title>
+</head>
+<body>
+<?php
     $status = $_POST['status'];
     echo "<center><h1>$status</h1></center>";
 
@@ -79,7 +85,7 @@
         mysqli_close($conn);
         header("Location: ./playlists.php?success");
     }
-    else if ($status = 'Display Songs in the Playlist')
+    else if ($status == 'Display Songs in the Playlist')
     {
         $query = "select * from Song, PlaylistSong,Playlist where Playlist.playlistid = PlaylistSong.playlistid and PlaylistSong.songid = Song.songid and Playlist.playlistname = ?;";
         $stmt = mysqli_stmt_init($conn);
@@ -117,13 +123,6 @@
         }
         mysqli_close($conn);
 
-    }
-    else if ($status = 'Add Song to the Playlist')
-    {  
-        // Add Song to the playlist
-        $query = "INSERT into "
-
-        mysqli_close($conn);
     }
 ?>
     <br>

@@ -3,6 +3,10 @@
 ?>
 
 <html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <title>M | albums</title>
+</head>
 <body>
 <?php
     $status = $_POST['status'];

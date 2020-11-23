@@ -1,3 +1,7 @@
+<?php
+    include_once 'includes/connection.php';
+?>
+
 <html>
 <head>
     <link rel="stylesheet" href="index.css">
@@ -5,8 +9,6 @@
 </head>
 <body>
 <?php
-    include_once 'includes/connection.php';
-
     $status = $_POST['status'];
     echo "<center><h1>$status</h1></center>";
 
@@ -117,15 +119,16 @@
     }
     else if ($status == 'List Artist\'s Albums')
     {  
-        $query = "";
+        $query = "select * from Album,Artist, ArtistAlbum where Artist.artistid = ArtistAlbum.artistid and ArtistAlbum.albumid = Album.albumid and Artist.artistname = ?;";
 
         $stmt = mysqli_stmt_init($conn);
 
         if(mysqli_stmt_prepare($stmt, $query)){
 
-            mysqli_stmt_bind_param($stmt, "i", $artist_id);
+            mysqli_stmt_bind_param($stmt, "s", $artist_name);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
+            echo "<center>";
             echo "<table border='1'>
                 <tr>
                 <th>Album id</th>
@@ -144,6 +147,7 @@
                 echo "</tr>";
             }
             echo "</table>";
+            echo "</center>";
         }
         else{
             echo "Fail";

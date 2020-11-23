@@ -41,8 +41,10 @@
         <input type = "text" id = "artist_name" name = "artist_name">
         <br><br>
         <table>
-            <select size = 3 id = status name = status>
+            <select size = 5 id = status name = status>
                 <option>Add Artist</option>
+                <option>Search Artist</option>
+                <option>Remove Artist</option>
                 <option>List Artist's Songs</option>
                 <option>List Artist's Albums</option>
             <select>

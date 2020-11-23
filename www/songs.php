@@ -15,20 +15,22 @@
         $result =$conn->query("SELECT * FROM Song;");
         echo "<table border='1'>
             <tr>
-            <th>Song id</th>
+            <th>Song ID</th>
             <th>Song name</th>
+            <th>Album ID</th>
             <th>Duration</th>
             <th>Listen Count</th>
-            <th>Album id</th>
+
             </tr>";
         while($row = mysqli_fetch_array($result))
         {
             echo "<tr>";
             echo "<td>" . $row['songid'] . "</td>";
             echo "<td>" . $row['songname'] . "</td>";
+            echo "<td>" . $row['albumid'] . "</td>";
             echo "<td>" . $row['duration'] . "</td>";
             echo "<td>" . $row['listencount'] . "</td>";
-            echo "<td>" . $row['albumid'] . "</td>";
+            
             echo "</tr>";
         }
         echo "</table>";
@@ -43,12 +45,12 @@
         <input type = "number" id = "song_id" name = "song_id">
         <label for="song_name">Song Name</label>
         <input type = "text" id = "song_name" name = "song_name">
-        <label for="len">Length</label>
-        <input type = "number" id = "len" name = "len">
-        <label for="listen_count">Listen Count</label>
-        <input type = "number" id = "listen_count" name = "listen_count">
         <label for="album_id">Album ID</label>
         <input type = "number" id = "album_id" name = "album_id">
+        <label for="duration">Duration</label>
+        <input type = "number" id = "duration" name = "duration">
+        <label for="listen_count">Listen Count</label>
+        <input type = "number" id = "listen_count" name = "listen_count">
         <br>
         <br>
         <table>

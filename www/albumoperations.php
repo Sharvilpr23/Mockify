@@ -30,12 +30,18 @@
 
             mysqli_stmt_bind_param($stmt, "isss", $album_id, $album_name, $genre, $release_date);
             mysqli_stmt_execute($stmt);
+            mysqli_stmt_prepare($stmt, $query2);
+            mysqli_stmt_bind_param($stmt, "is", $album_id, $artist_id);
+            mysqli_stmt_execute($stmt);
+            mysqli_stmt_prepare($stmt, $query3);
+            mysqli_stmt_bind_param($stmt, "is", $artist_id, $artist_name);
+            mysqli_stmt_execute($stmt);
         }
         else{
             echo "Fail";
         }
         mysqli_close($conn);
-        header("Location: ./songs.php?success");
+        header("Location: ./albums.php?success");
 
         // Prompt for Songs to be added to the album
     }

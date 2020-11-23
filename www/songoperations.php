@@ -3,57 +3,55 @@
 ?>
 
 <html>
+<head>
+    <link rel="stylesheet" href="index.css">
+    <title>M | songs</title>
+</head>
 <body>
 <?php
     $status = $_POST['status'];
     echo "<center><h1>$status</h1></center>";
+
     $song_id = mysqli_real_escape_string($conn, $_POST['song_id']);
     $song_name = mysqli_real_escape_string($conn, $_POST['song_name']);
-    $duration = mysqli_real_escape_string($conn, $_POST['len']);
-    $listen_count = mysqli_real_escape_string($conn, $_POST['listen_count']);
     $album_id = mysqli_real_escape_string($conn, $_POST['album_id']);
+    $duration = mysqli_real_escape_string($conn, $_POST['duration']);
+    $listen_count = mysqli_real_escape_string($conn, $_POST['listen_count']);
 
     if ($status == "Add Song")
     {
-        echo $status;
-        echo $song_id;
-        echo $song_name;
-        echo $duration;
-        echo $listen_count;
-        echo $album_id;
-
-        $query = "INSERT into Song (songid, songname, duration, listencount, albumid)
+        $query = "INSERT into Song (songid, songname, albumid, duration, listencount)
                     VALUES (?, ?, ?, ?, ?);";
 
         $stmt = mysqli_stmt_init($conn);
 
         if(mysqli_stmt_prepare($stmt, $query)){
 
-            mysqli_stmt_bind_param($stmt, "isdii", $song_id, $song_name, $duration, $listen_count, $album_id);
+            mysqli_stmt_bind_param($stmt, "isdii", $song_id, $song_name, $album_id, $duration, $listen_count);
             mysqli_stmt_execute($stmt);
         }
         else{
             echo "Fail";
         }
         mysqli_close($conn);
-        header("Location: ./songs.php?success");
+        header("Location: ./songs.php");
     }
     else if ($status == 'Search Song')
     {  
-        $query = "SELECT * FROM Song WHERE songname = ? OR albumid = ?";
+        $query = "SELECT * FROM Song WHERE songid = ? OR songname = ?";
 
         $stmt = mysqli_stmt_init($conn);
 
         if(mysqli_stmt_prepare($stmt, $query)){
 
-            mysqli_stmt_bind_param($stmt, "si", $song_name, $album_id);
+            mysqli_stmt_bind_param($stmt, "is", $song_id, $song_name);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             echo "<center><table border='1'>
             <tr>
             <th>Song id</th>
             <th>Song name</th>
-            <th>Length</th>
+            <th>Duration</th>
             <th>Listen Count</th>
             <th>Album id</th>
             </tr>";
@@ -62,14 +60,14 @@
                 echo "<tr>";
                 echo "<td>" . $row['songid'] . "</td>";
                 echo "<td>" . $row['songname'] . "</td>";
-                echo "<td>" . $row['length'] . "</td>";
-                echo "<td>" . $row['listencount'] . "</td>";
                 echo "<td>" . $row['albumid'] . "</td>";
+                echo "<td>" . $row['duration'] . "</td>";
+                echo "<td>" . $row['listencount'] . "</td>";
                 echo "</tr>";
             }
             echo "</table></center>";
         }
-        else{
+        else {
             echo "Fail";
         }
         echo "<br><center><a href='songs.php'>Return to Songs Menu</a></center>";
@@ -90,7 +88,7 @@
             echo "Fail";
         }
         mysqli_close($conn);
-        header("Location: ./songs.php?success");
+        header("Location: ./songs.php");
     }
     
 ?>

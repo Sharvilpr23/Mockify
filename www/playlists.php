@@ -41,7 +41,10 @@
         <input type = "text" id = "playlist_name" name = "playlist_name">
         <br><br>
         <table>
-            <select size = 2 id = status name = status>
+            <select size = 5 id = status name = status>
+                <option>Create Playlist</option>
+                <option>Search Playlist</option>
+                <option>Remove Playlist</options>
                 <option>Display Songs in the Playlist</option>
                 <option>Add Song to the Playlist</option>
             <select>

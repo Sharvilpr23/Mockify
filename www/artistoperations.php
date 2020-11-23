@@ -52,7 +52,6 @@
             </tr>";
             while($row = mysqli_fetch_array($result))
             {
-                // Figure out how to print artist
                 echo "<tr>";
                 echo "<td>" . $row['artistid'] . "</td>";
                 echo "<td>" . $row['artistname'] . "</td>";
@@ -154,7 +153,6 @@
         }
         mysqli_close($conn);
     }
-    //header("Location: ./artists.php?success");
     echo "<br><center><a href='artists.php'>Return to Artist Menu</a></center>";
 
 ?>

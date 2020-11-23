@@ -54,7 +54,6 @@
             </tr>";
             while($row = mysqli_fetch_array($result))
             {
-                // Figure out how to print artist
                 echo "<tr>";
                 echo "<td>" . $row['playlistid'] . "</td>";
                 echo "<td>" . $row['playlistname'] . "</td>";
@@ -106,7 +105,6 @@
             </tr>";
             while($row = mysqli_fetch_array($result))
             {
-                // Figure out how to print artist
                 echo "<tr>";
                 echo "<td>" . $row['songid'] . "</td>";
                 echo "<td>" . $row['songname'] . "</td>";

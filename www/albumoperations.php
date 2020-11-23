@@ -46,8 +46,6 @@
         }
         mysqli_close($conn);
         header("Location: ./albums.php?success");
-
-        // Prompt for Songs to be added to the album
     }
     else if ($status == 'Search Album')
     {  
